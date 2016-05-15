@@ -1,0 +1,7 @@
+AuthorTestDao.class
+tagDaoTest.class
+CategoryDaoTest.class
+StatusDaoTest.class
+PostDaoTest.class
+PageDaoUnitTest.class
+NavBarLocationDaoUnitTest.class
