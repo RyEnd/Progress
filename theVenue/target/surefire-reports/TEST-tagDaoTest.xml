@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="1.999" errors="0" skipped="0" tests="9" name="tagDaoTest">
+<testsuite failures="0" time="2.185" errors="0" skipped="0" tests="9" name="tagDaoTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -61,13 +61,13 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.224" classname="tagDaoTest" name="deleteTagTest"/>
-  <testcase time="0.22" classname="tagDaoTest" name="addTag"/>
-  <testcase time="0.232" classname="tagDaoTest" name="getTagsByPostIdTestWhenNoTagsAreAssociatedWithThePost"/>
-  <testcase time="0.212" classname="tagDaoTest" name="getTagById"/>
-  <testcase time="0.2" classname="tagDaoTest" name="getAllTagTest"/>
-  <testcase time="0.288" classname="tagDaoTest" name="getTagsByPostIdTest"/>
-  <testcase time="0.224" classname="tagDaoTest" name="addDuplicateTagTest"/>
-  <testcase time="0.192" classname="tagDaoTest" name="updateTagTest"/>
-  <testcase time="0.207" classname="tagDaoTest" name="getTagByTagNameTest"/>
+  <testcase time="0.256" classname="tagDaoTest" name="deleteTagTest"/>
+  <testcase time="0.292" classname="tagDaoTest" name="addTag"/>
+  <testcase time="0.247" classname="tagDaoTest" name="getTagsByPostIdTestWhenNoTagsAreAssociatedWithThePost"/>
+  <testcase time="0.239" classname="tagDaoTest" name="getTagById"/>
+  <testcase time="0.207" classname="tagDaoTest" name="getAllTagTest"/>
+  <testcase time="0.243" classname="tagDaoTest" name="getTagsByPostIdTest"/>
+  <testcase time="0.229" classname="tagDaoTest" name="addDuplicateTagTest"/>
+  <testcase time="0.215" classname="tagDaoTest" name="updateTagTest"/>
+  <testcase time="0.257" classname="tagDaoTest" name="getTagByTagNameTest"/>
 </testsuite>
