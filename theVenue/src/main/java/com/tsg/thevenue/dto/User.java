@@ -5,6 +5,7 @@
  */
 package com.tsg.thevenue.dto;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -19,8 +20,19 @@ public class User {
     private String email;
     private String password;
     private String role;
+    private ArrayList<String> authorities = new ArrayList<String>();
+
+    public ArrayList<String> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(ArrayList<String> authorities) {
+        this.authorities = authorities;
+    }
     
-    
+    public void addAuthority(String authority){
+        this.authorities.add(authority);
+    }
 
     public int getUserId() {
         return userId;

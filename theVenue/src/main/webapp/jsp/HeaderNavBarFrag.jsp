@@ -75,7 +75,7 @@
                             
             </ul>
             <div class="collapse" id="signIn">
-                <a href="/control"><button type="button" class="btn btn-default navbar-btn navbar-right pull-right">Sign in</button></a>
+                <a href="${pageContext.request.contextPath}/control"><button type="button" class="btn btn-default navbar-btn navbar-right pull-right">Sign in</button></a>
             </div>
         </div>
     </div>

@@ -755,87 +755,47 @@ function loadPostList() {
             url: 'getEmployeePosts'
         }).success(function (postList, status) {
             for (var i = 0; i < postList.length; i++) {
-                if (postList[i].status.statusId === 1) {
-                    var currentPost = postList[i];
-                    activeRows.append($('<tr>')
+                var currentPost = postList[i];
+                activeRows.append($('<tr>')
+                    .attr({
+                        id: 'post-' + currentPost.postId
+                    })
+                    .append($('<td>')
                             .attr({
-                                id: 'post-' + currentPost.postId
+                                class: 'index'
                             })
-                            .append($('<td>')
+                            .text(currentPost.postId))
+                    .append($('<td>')
+                            .append($('<a>')
                                     .attr({
-                                        class: 'index'
+                                        href: '#',
+                                        onclick: "showEditPostForm(" + currentPost.postId + ")"
                                     })
-                                    .text(currentPost.postId))
-                            .append($('<td>')
-                                    .append($('<a>')
+                                    .append($('<kbd>')
+                                            .text(currentPost.title))))
+                    .append($('<td>')
+                            .text(currentPost.author.authorName))
+                    .append($('<td>')
+                            .text(currentPost.publishDate))
+                    .append($('<td>')
+                            .text(currentPost.status.status))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .append($('<span>')
                                             .attr({
-                                                href: '#',
-                                                onclick: "showEditPostForm(" + currentPost.postId + ")"
+                                                class: 'btn btn-success gradient'
                                             })
-                                            .append($('<kbd>')
-                                                    .text(currentPost.title))))
-                            .append($('<td>')
-                                    .text(currentPost.author.authorName))
-                            .append($('<td>')
-                                    .text(currentPost.publishDate))
-                            .append($('<td>')
-                                    .append($('<a>')
-                                            .append($('<span>')
-                                                    .attr({
-                                                        class: 'btn btn-success gradient'
-                                                    })
-                                                    .text('disabled'))))
-                            .append($('<td>')
-                                    .append($('<a>')
-                                            .append($('<span>')
-                                                    .attr({
-                                                        class: 'btn btn-danger gradient'
-                                                    })
-                                                    .text('disabled')))));
-                } else {
-                    var currentPost = postList[i];
-                    inactiveRows.append($('<tr>')
-                            .attr({
-                                id: 'post-' + currentPost.postId
-                            })
-                            .append($('<td>')
-                                    .attr({
-                                        class: 'index'
-                                    })
-                                    .text(currentPost.postId))
-                            .append($('<td>')
-                                    .append($('<a>')
+                                            .text('Disabled'))))
+                    .append($('<td>')
+                            .append($('<a>')
+                                    .append($('<span>')
                                             .attr({
-                                                href: '#',
-                                                onclick: "showEditPostForm(" + currentPost.postId + ")"
+                                                class: 'btn btn-danger gradient'
                                             })
-                                            .append($('<kbd>')
-                                                    .text(currentPost.title))))
-                            .append($('<td>')
-                                    .text(currentPost.author.authorName))
-                            .append($('<td>')
-                                    .text(currentPost.publishDate))
-                            .append($('<td>')
-                                    .text(currentPost.status.status))
-                            .append($('<td>')
-                                    .append($('<a>')
-                                            .append($('<span>')
-                                                    .attr({
-                                                        class: 'btn btn-success gradient'
-                                                    })
-                                                    .text('Disabled'))))
-                            .append($('<td>')
-                                    .append($('<a>')
-                                            .append($('<span>')
-                                                    .attr({
-                                                        class: 'btn btn-danger gradient'
-                                                    })
-                                                    .text('Disabled')))));
-                }
+                                            .text('Disabled')))));
             }
         });
     }
-    ;
 }
 
 function archivePost(id) {
