@@ -6,3 +6,5 @@ A CMS created from scratch, using SpringMVC, SQL, JAVA, JavaScript, and Agile me
 
 #notes
 two .sql files imported to schema names "TheVenue" and "TheVenue_test" respectively.
+
+#A deployed version similar to this source code can be found [*HERE*](https://thevenue-swgcapstone.rhcloud.com).
