@@ -1,3 +1,9 @@
+/**
+ * A simple IO class who's object may assist in the processing and validation
+ * of console system input in the form of bound and unbound integers, floats
+ * and doubles, as w ell as strings and operators (*-/+).
+ */
+
 package com.tsg.flooringmastery.ui;
 
 import java.util.Scanner;
@@ -6,133 +12,186 @@ import java.util.Scanner;
  *
  * @author ryanbmolnar@gmail.com
  */
-
 public class ConsoleIO {
 
     Scanner sc = new Scanner(System.in);
 
-    public int getAndReturnInt(String prompt) {
-        int userInt;
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        userInt = sc.nextInt();
+    public String validateOperation(String operator){
+        boolean exception = true;
+        while (exception){
+            if (operator.equals("+")||operator.equals("-")||operator.equals("/")||operator.equals("*")){
+                exception = false;
+            } else {
+                System.out.println("This is not a valid operation. \nPlease enter a valid operator: (add(+), subtract(-), divide(/), or multiply(*))");
+                operator = sc.nextLine();
+                exception = true;
+            }
+        }
+        return operator;
+    }
+    
+    public int getInt(String prompt) {
+        int userInt = 0;
+        boolean exception = true;
+        
+        while (exception) {
+            System.out.println(prompt);
+            String input = sc.nextLine();
+            try {
+                userInt = Integer.parseInt(input);
+                exception = false;
+            } catch (Exception ex) {
+                System.out.println("That wasn't a number, please type an integer.");
+                exception = true;
+            }
+        }
         return userInt;
     }
 
-    public int getAndReturnBoundInt(String prompt, int min, int max) throws Exception {
-        boolean valid = false;
-        String userBoundInput;
-        int finalUserInput;
-
-        do {
+    public int getInt(String prompt, int min, int max) {
+        int userInt = 0;
+        boolean exception = true;
+        
+        while (exception) {
             System.out.println(prompt);
-            userBoundInput = sc.nextLine();
-            newTestForRange(min, max, userBoundInput);
-            if ((getIsValidResponse()) == false) {
-                System.out.println(getPrompt());
-                valid = false;
-            } else {
-                valid = true;
+            String input = sc.nextLine();
+            
+            try{
+                userInt = Integer.parseInt(input);
+                try{
+                    testIntForRange(min, max, userInt);
+                    exception = false;
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    exception = true;
+                }
+            } catch (Exception ex) {
+                System.out.println("That wasn't a number, please type an integer.");
+                exception = true;
             }
-        } while (valid == false);
+        }
 
-        finalUserInput = Integer.parseInt(userBoundInput);
-        return finalUserInput;
+        return userInt;
+    }
+            
+    public void testIntForRange(int min, int max, int userInput) throws Exception {
+        if (userInput < min) {
+            throw new Exception("The number you entered is less than " + min + ".");
+        } else if (userInput > max) {
+            throw new Exception("The number you entered is larger than " + max + ".");
+        }
     }
 
-    public String getAndReturnString(String prompt) {
-        String userString;
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        userString = sc.nextLine();
-        return userString;
-    }
-
-    public Float getAndReturnFloat(String prompt) {
-        Float userFloat;
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        userFloat = sc.nextFloat();
+    public float getFloat(String prompt) {
+        float userFloat = 0;
+        boolean exception = true;
+        
+        while(exception){
+            System.out.println(prompt);
+            String input = sc.nextLine();
+            try{
+                userFloat = Float.parseFloat(input);
+                exception = false;
+            } catch (Exception ex){
+                System.out.println("That wasn't a number, please type an integer.");
+                exception = true;
+            }
+        }
         return userFloat;
     }
 
-    public Float getAndReturnBoundFloat(String prompt, float min, float max) {
-        Float userBoundFloat;
-        do {
-            Scanner sc = new Scanner(System.in);
+    public float getFloat(String prompt, float min, float max) {
+        float userFloat = 0;
+        boolean exception = true;
+        
+        while (exception) {
             System.out.println(prompt);
-            userBoundFloat = sc.nextFloat();
-        } while (userBoundFloat > max || userBoundFloat < min);
-        return userBoundFloat;
-    }
+            String input = sc.nextLine();
+            
+            try{
+                userFloat = Float.parseFloat(input);
+                try{
+                    testFloatForRange(min, max, userFloat);
+                    exception = false;
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    exception = true;
+                }
+            } catch (Exception ex) {
+                System.out.println("That wasn't a number, please type an integer.");
+                exception = true;
+            }
+        }
 
-    public Double getAndReturnDouble(String prompt) {
-        Double userDouble;
-        Scanner sc = new Scanner(System.in);
-        System.out.println(prompt);
-        userDouble = sc.nextDouble();
+        return userFloat;
+    }
+    
+    public void testFloatForRange(float min, float max, float userInput) throws Exception {
+        if (userInput < min) {
+            throw new Exception("The number you entered is less than " + min + ".");
+        } else if (userInput > max) {
+            throw new Exception("The number you entered is larger than " + max + ".");
+        }
+    }
+    
+    public double getAndReturnDouble(String prompt) {
+        double userDouble = 0;
+        boolean exception = true;
+        
+        while(exception){
+            System.out.println(prompt);
+            String input = sc.nextLine();
+            try{
+                userDouble = Double.parseDouble(input);
+                exception = false;
+            } catch (Exception ex){
+                System.out.println("That wasn't a number, please type an integer.");
+                exception = true;
+            }
+        }
         return userDouble;
     }
 
-    public Double getAndReturnBoundDouble(String prompt, double min, double max) {
-        Double userBoundDouble;
-        do {
-            Scanner sc = new Scanner(System.in);
+    public double getDouble(String prompt, double min, double max) {
+        double userDouble = 0;
+        boolean exception = true;
+        
+        while (exception) {
             System.out.println(prompt);
-            userBoundDouble = sc.nextDouble();
-        } while (userBoundDouble > max || userBoundDouble < min);
-        return userBoundDouble;
+            String input = sc.nextLine();
+            
+            try{
+                userDouble = Double.parseDouble(input);
+                try{
+                    testDoubleForRange(min, max, userDouble);
+                    exception = false;
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    exception = true;
+                }
+            } catch (Exception ex) {
+                System.out.println("That wasn't a number, please type an integer.");
+                exception = true;
+            }
+        }
+
+        return userDouble;
     }
 
+    public void testDoubleForRange(double min, double max, double userInput) throws Exception {
+        if (userInput < min) {
+            throw new Exception("The number you entered is less than " + min + ".");
+        } else if (userInput > max) {
+            throw new Exception("The number you entered is larger than " + max + ".");
+        }
+    }
+    
     public void printString(String prompt) {
         System.out.println(prompt);
     }
-    private boolean validResponse = false;
-    private String prompt = "";
-
-    public boolean getIsValidResponse() {
-        return validResponse;
-    }
-
-    public void setValid(boolean valid) {
-        this.validResponse = validResponse;
-    }
-
-    public String getPrompt() {
-        return prompt;
-    }
-
-    public void setPrompt(String prompt) {
-        this.prompt = prompt;
-    }
-
-    public void newTestForRange(int min, int max, String userInput) throws Exception {
-        boolean exception = false;
-        int userInput2;
-        if (min > max) {
-            throw new Exception("Slow down, that's too much.");
-        }
-        try {
-            Integer.parseInt(userInput);
-        } catch (Exception e) {
-            exception = true;
-        }
-
-        if (exception == true) {
-            validResponse = false;
-            prompt = "Your entry was not an acceptable number. Try again.";
-        } else {
-            userInput2 = Integer.parseInt(userInput);
-            if (userInput2 < min) {
-                validResponse = false;
-                prompt = "The number you entered is out of bounds: Too small. ";
-            } else if (userInput2 > max) {
-                validResponse = false;
-                prompt = "The number you entered is out of bounds: Too large.";
-            } else {
-                validResponse = true;
-                prompt = "";
-            }
-        }
+    
+    public String getString(String prompt) {
+        System.out.println(prompt);
+        return sc.nextLine();
     }
 }

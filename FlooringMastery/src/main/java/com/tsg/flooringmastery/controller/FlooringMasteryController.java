@@ -49,7 +49,7 @@ public class FlooringMasteryController {
 
         while (keepAlive) {
             printMenu();
-            int userInput = io.getAndReturnBoundInt("\nPlease select an option 1-6.", 1, 6);
+            int userInput = io.getInt("\nPlease select an option 1-6.", 1, 6);
             switch (userInput) {
                 case 1:
                     displayOrders();
@@ -95,7 +95,7 @@ public class FlooringMasteryController {
     private void displayOrders() {
         try {
             String date;
-            String answer = io.getAndReturnString("\nPlease enter the date of the orders you wish to display, or hit enter to view today's orders.\nYYYY/MM/DD");
+            String answer = io.getString("\nPlease enter the date of the orders you wish to display, or hit enter to view today's orders.\nYYYY/MM/DD");
             if ("".equals(answer)) {
                 date = df.format(today).replaceAll("/", "");
             } else {
@@ -114,14 +114,14 @@ public class FlooringMasteryController {
             String date;
             Order order;
             Integer orderNum = floorDAO.getOrderNum();
-            name = io.getAndReturnString("\nPlease enter your full name:");
+            name = io.getString("\nPlease enter your full name:");
             io.printString("\n" + stateDAO.getListOfStates());
-            Integer state = io.getAndReturnBoundInt("Please select your billing state from the options above.", 1, stateDAO.stateInfo.size());
+            Integer state = io.getInt("Please select your billing state from the options above.", 1, stateDAO.stateInfo.size());
             io.printString("\n" + productDAO.getListOfProducts());
-            Integer type = io.getAndReturnBoundInt("Please select the product type from the list above.", 1, productDAO.productInfo.size());
-            Integer area = io.getAndReturnBoundInt("\nPlease input project area in square feet. We accomodate projects up to 10,000sq.ft.", 1, 10000);
+            Integer type = io.getInt("Please select the product type from the list above.", 1, productDAO.productInfo.size());
+            Integer area = io.getInt("\nPlease input project area in square feet. We accomodate projects up to 10,000sq.ft.", 1, 10000);
             io.printString("\n" + productDAO.productInfo.get(type).getType() + " will cost $" + productDAO.getProductInfo(type).getSqFtMaterialCost() + "/sqft of materials, and labor costs $" + productDAO.getProductInfo(type).getSqFtLaborCost() + "/sqft to install.");
-            String answer = io.getAndReturnString("\nIf you would like to set a date for your order other than today, enter it now. Otherwise, press enter.\nYYYY/MM/DD");
+            String answer = io.getString("\nIf you would like to set a date for your order other than today, enter it now. Otherwise, press enter.\nYYYY/MM/DD");
 
             if ("".equals(answer)) {
                 date = df.format(today).replaceAll("/", "");
@@ -131,12 +131,12 @@ public class FlooringMasteryController {
 
             order = logic.createOrder(orderNum, name, state, type, date, area);
             io.printString("\n" + order.toString());
-            String userInput = io.getAndReturnString("\nPlease look over your order and then hit enter to submit it, or type 'toss' to delete your order.\nYou can edit your order after it has been submitted.");
+            String userInput = io.getString("\nPlease look over your order and then hit enter to submit it, or type 'toss' to delete your order.\nYou can edit your order after it has been submitted.");
             if (userInput.equals("")) {
                 io.printString("\nYour order was submitted successfully...");
                 floorDAO.commitOrder(order);
             } else {
-                String userInput2 = io.getAndReturnString("\nAre you sure you want to delete your order and return to the main menu? Y/N");
+                String userInput2 = io.getString("\nAre you sure you want to delete your order and return to the main menu? Y/N");
                 if (userInput2.equalsIgnoreCase("Y")) {
                     io.printString("\nthrew ya order out, returning you to the main menu.");
                 } else {
@@ -156,7 +156,7 @@ public class FlooringMasteryController {
         String newName;
         Order order, newOrder;
 
-        String answer = io.getAndReturnString("\nPlease enter the date of the order you wish to display, or hit enter to return today's date.\nYYYY/MM/DD");
+        String answer = io.getString("\nPlease enter the date of the order you wish to display, or hit enter to return today's date.\nYYYY/MM/DD");
 
         if ("".equals(answer)) {
             date = df.format(today).replaceAll("/", "");
@@ -170,20 +170,20 @@ public class FlooringMasteryController {
             io.printString("\nWe didn't find any orders for that date.");
             return;
         }
-        int orderNum = io.getAndReturnInt("\nPlease enter your order number.");
+        int orderNum = io.getInt("\nPlease enter your order number.");
         io.printString(floorDAO.viewOrderInfo(orderNum));
         io.printString("\nWe found your order!");
         order = floorDAO.getCurrentInfo(orderNum);
         io.printString("\n" + stateDAO.getListOfStates());
-        Integer newState = io.getAndReturnBoundInt("Please select your new billing state from the options above.", 1, stateDAO.stateInfo.size());
+        Integer newState = io.getInt("Please select your new billing state from the options above.", 1, stateDAO.stateInfo.size());
         io.printString("\n" + productDAO.getListOfProducts());
-        Integer newType = io.getAndReturnBoundInt("Please select the new product type from the list above:", 1, productDAO.productInfo.size());
+        Integer newType = io.getInt("Please select the new product type from the list above:", 1, productDAO.productInfo.size());
         io.printString("\nEnter your new information below or hit enter to keep the old data.");
-        newName = io.getAndReturnString("\nPlease enter your full name:");
+        newName = io.getString("\nPlease enter your full name:");
         if ("".equals(newName)) {
             newName = order.getCustomerName();
         }
-        String newAnswer = io.getAndReturnString("\nPlease enter the new date of the order, hit enter to use the old date, or type 'today' to enter today's date.\nYYYY/MM/DD");
+        String newAnswer = io.getString("\nPlease enter the new date of the order, hit enter to use the old date, or type 'today' to enter today's date.\nYYYY/MM/DD");
         if ("".equals(newAnswer)) {
             newDate = order.getDate();
         } else if ("today".equalsIgnoreCase(newAnswer)) {
@@ -191,18 +191,18 @@ public class FlooringMasteryController {
         } else {
             newDate = newAnswer.replaceAll("/", "");
         }
-        Integer newArea = io.getAndReturnBoundInt("\nPlease input new project area. (below 10,000)", 1, 10000);
+        Integer newArea = io.getInt("\nPlease input new project area. (below 10,000)", 1, 10000);
         if (Objects.equals(newArea, "")) {
             newArea = order.getArea();
         }
         newOrder = logic.createOrder(orderNum, newName, newState, newType, newDate, newArea);
         io.printString(newOrder.toString());
-        String userInput = io.getAndReturnString("\nPlease look over your order and then hit enter to submit your changes, or type 'toss' to delete your changes.\nYou can edit your order again after it has been submitted.");
+        String userInput = io.getString("\nPlease look over your order and then hit enter to submit your changes, or type 'toss' to delete your changes.\nYou can edit your order again after it has been submitted.");
         if (userInput.equals("")) {
             io.printString("\nYour order was submitted successfully...");
             floorDAO.commitOrder(newOrder);
         } else {
-            String userInput2 = io.getAndReturnString("\nAre you sure you want to delete your changes and return to the main menu? Y/N");
+            String userInput2 = io.getString("\nAre you sure you want to delete your changes and return to the main menu? Y/N");
             if (userInput2.equalsIgnoreCase("Y")) {
                 io.printString("\nI tossed your changes, returning you to the main menu.");
             } else {
@@ -214,7 +214,7 @@ public class FlooringMasteryController {
 
     private void removeOrder() {
         String date;
-        String answer = io.getAndReturnString("\nPlease enter the date of the order you wish to display, or hit enter to return today's date.\nYYYY/MM/DD");
+        String answer = io.getString("\nPlease enter the date of the order you wish to display, or hit enter to return today's date.\nYYYY/MM/DD");
 
         if ("".equals(answer)) {
             date = df.format(today).replaceAll("/", "");
@@ -228,12 +228,12 @@ public class FlooringMasteryController {
             io.printString("\nWe didn't find any orders for that date.");
             return;
         }
-        int orderNum = io.getAndReturnInt("\nPlease enter your order number.");
+        int orderNum = io.getInt("\nPlease enter your order number.");
         io.printString("\nWe found your order!\nHere it is:");
         io.printString(floorDAO.viewOrderInfo(orderNum));
         boolean alive = true;
         while (alive) {
-            String userInput = io.getAndReturnString("\nIs this the order you wish to delete? Y/N");
+            String userInput = io.getString("\nIs this the order you wish to delete? Y/N");
             if (userInput.equalsIgnoreCase("y")) {
                 floorDAO.removeOrder(orderNum);
                 alive = false;
@@ -280,7 +280,7 @@ public class FlooringMasteryController {
     }
 
     private void quit() {
-        String userInput = io.getAndReturnString("Have you made sure to save all of your changes? Y/N");
+        String userInput = io.getString("Have you made sure to save all of your changes? Y/N");
         if (userInput.equalsIgnoreCase("y")) {
                 io.printString("Thank you for your business!");
                 keepAlive = false;
