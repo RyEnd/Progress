@@ -47,10 +47,10 @@ public class UserController {
         return dao.addUser(user);
     }
 
-    @RequestMapping(value = "/user/{name}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable String username) {
-        dao.deleteUser(username);
+    public void delete(@PathVariable("id") int userId) {
+        dao.deleteUser(userId);
     }
 
     @RequestMapping(value = "/user/{name}", method = RequestMethod.PUT)
@@ -72,11 +72,11 @@ public class UserController {
         return dao.getAllUsers();
     }
 
-    @RequestMapping(value = "/user/{postId}", method = RequestMethod.GET)
-    @ResponseBody
-    public User getUserByPostId(int userId) {
-        return dao.getUserByPostId(userId);
-    }
+//    @RequestMapping(value = "/user/{postId}", method = RequestMethod.GET)
+//    @ResponseBody
+//    public User getUserByPostId(int userId) {
+//        return dao.getUserByPostId(userId);
+//    }
     
     @RequestMapping(value="/displayUserList", method=RequestMethod.GET)
     public String displayUserList(Map<String, Object> model){
@@ -93,7 +93,7 @@ public class UserController {
     @RequestMapping(value="/addUser", method=RequestMethod.POST)
     public String addUser(HttpServletRequest req) {
         User u = new User();
-        u.setUserName(req.getParameter("username"));
+        u.setUsername(req.getParameter("username"));
         u.setPassword(req.getParameter("password"));
         u.setEmail(req.getParameter("email"));
         u.addAuthority("ROLE_USER");
@@ -106,10 +106,10 @@ public class UserController {
         return "redirect:displayUserList";
     }
     
-    @RequestMapping(value="/deleteUser", method=RequestMethod.GET)
-    public String deleteUser(@RequestParam("username") String username, Map<String, Object> model){
-        dao.deleteUser(username);
-        return "redirect:displayUserList";
-    }
+//    @RequestMapping(value="/deleteUser", method=RequestMethod.GET)
+//    public String deleteUser(@RequestParam("username") String username, Map<String, Object> model){
+//        dao.deleteUser(username);
+//        return "redirect:displayUserList";
+//    }
 
 }

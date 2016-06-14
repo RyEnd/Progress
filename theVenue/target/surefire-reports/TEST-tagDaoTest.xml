@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="2.185" errors="0" skipped="0" tests="9" name="tagDaoTest">
+<testsuite failures="0" time="1.96" errors="0" skipped="0" tests="9" name="tagDaoTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -17,6 +17,7 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/home/ryan/dev/_repos/Software-Guild-Projects/theVenue"/>
     <property name="java.runtime.version" value="1.7.0_101-b00"/>
+    <property name="netbeans.deploy" value="true"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/endorsed"/>
     <property name="os.arch" value="amd64"/>
@@ -43,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/ryan/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dnetbeans.deploy=true -Dmaven.ext.class.path=/home/ryan/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,13 +62,13 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.256" classname="tagDaoTest" name="deleteTagTest"/>
-  <testcase time="0.292" classname="tagDaoTest" name="addTag"/>
-  <testcase time="0.247" classname="tagDaoTest" name="getTagsByPostIdTestWhenNoTagsAreAssociatedWithThePost"/>
-  <testcase time="0.239" classname="tagDaoTest" name="getTagById"/>
-  <testcase time="0.207" classname="tagDaoTest" name="getAllTagTest"/>
-  <testcase time="0.243" classname="tagDaoTest" name="getTagsByPostIdTest"/>
-  <testcase time="0.229" classname="tagDaoTest" name="addDuplicateTagTest"/>
-  <testcase time="0.215" classname="tagDaoTest" name="updateTagTest"/>
-  <testcase time="0.257" classname="tagDaoTest" name="getTagByTagNameTest"/>
+  <testcase time="0.182" classname="tagDaoTest" name="deleteTagTest"/>
+  <testcase time="0.211" classname="tagDaoTest" name="addTag"/>
+  <testcase time="0.226" classname="tagDaoTest" name="getTagsByPostIdTestWhenNoTagsAreAssociatedWithThePost"/>
+  <testcase time="0.212" classname="tagDaoTest" name="getTagById"/>
+  <testcase time="0.204" classname="tagDaoTest" name="getAllTagTest"/>
+  <testcase time="0.275" classname="tagDaoTest" name="getTagsByPostIdTest"/>
+  <testcase time="0.245" classname="tagDaoTest" name="addDuplicateTagTest"/>
+  <testcase time="0.203" classname="tagDaoTest" name="updateTagTest"/>
+  <testcase time="0.202" classname="tagDaoTest" name="getTagByTagNameTest"/>
 </testsuite>

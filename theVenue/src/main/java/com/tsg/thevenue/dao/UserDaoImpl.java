@@ -32,13 +32,15 @@ public class UserDaoImpl implements UserDao {
             = "insert into User (Username, Password, Email, Enabled) value (?,?,?,1)";
 
     private static final String SQL_DELETE_USER
-            = "delete from User where Username = ?";
+            = "delete from User where UserId = ?";
 
     private static final String SQL_UPDATE_USER
             = "update User set Username = ?, Password = ?, Email = ? where UserId = ?";
 
     private static final String SQL_SELECT_USER_BY_ID
             = "select * from User where UserId = ?";
+    private static final String SQL_SELECT_USERNAME_BY_USERID
+            = "select Username from User where UserId = ?";
 
     private static final String SQL_SELECT_ALL_USERS
             = "select * from User";
@@ -60,29 +62,30 @@ public class UserDaoImpl implements UserDao {
     public User addUser(User user) {
 
         jdbcTemplate.update(SQL_INSERT_USER,
-                user.getUserName(),
+                user.getUsername(),
                 user.getPassword(),
                 user.getEmail());
         user.setUserId(jdbcTemplate.queryForObject("select LAST_INSERT_ID()", Integer.class));
 
         ArrayList<String> authorities = user.getAuthorities();
         for (String authority : authorities) {
-            jdbcTemplate.update(SQL_INSERT_AUTHORITY, user.getUserName(), authority);
+            jdbcTemplate.update(SQL_INSERT_AUTHORITY, user.getUsername(), authority);
         }
         
         return user;
     }
 
     @Override
-    public void deleteUser(String username) {
+    public void deleteUser(int userId) {
+        String username = jdbcTemplate.queryForObject(SQL_SELECT_USERNAME_BY_USERID, String.class, userId);
         jdbcTemplate.update(SQL_DELETE_AUTHORITIES, username);
-        jdbcTemplate.update(SQL_DELETE_USER, username);
+        jdbcTemplate.update(SQL_DELETE_USER, userId);
     }
 
     @Override
     public void updateUser(User user) {
         jdbcTemplate.update(SQL_UPDATE_USER,
-                user.getUserName(),
+                user.getUsername(),
                 user.getPassword(),
                 user.getEmail(),
                 user.getUserId());
@@ -114,7 +117,7 @@ public class UserDaoImpl implements UserDao {
         @Override
         public User mapRow(ResultSet rs, int i) throws SQLException {
             User u = new User();
-            u.setUserName(rs.getString("Username"));
+            u.setUsername(rs.getString("Username"));
             u.setPassword(rs.getString("Password"));
             u.setEmail(rs.getString("Email"));
             u.setUserId(rs.getInt("UserId"));

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="3.481" errors="0" skipped="0" tests="9" name="CategoryDaoTest">
+<testsuite failures="0" time="2.312" errors="0" skipped="0" tests="9" name="CategoryDaoTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -17,6 +17,7 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/home/ryan/dev/_repos/Software-Guild-Projects/theVenue"/>
     <property name="java.runtime.version" value="1.7.0_101-b00"/>
+    <property name="netbeans.deploy" value="true"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/endorsed"/>
     <property name="os.arch" value="amd64"/>
@@ -43,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-openjdk-amd64/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/ryan/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dnetbeans.deploy=true -Dmaven.ext.class.path=/home/ryan/netbeans-8.1/java/maven-nblib/netbeans-eventspy.jar package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -61,13 +62,13 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.316" classname="CategoryDaoTest" name="testGetCategoryByName"/>
-  <testcase time="0.29" classname="CategoryDaoTest" name="TestGetAllCategories"/>
-  <testcase time="0.291" classname="CategoryDaoTest" name="deleteCategoryTest"/>
-  <testcase time="0.549" classname="CategoryDaoTest" name="testCreateWithDuplicateCategories"/>
-  <testcase time="0.285" classname="CategoryDaoTest" name="updateCategoryTest"/>
-  <testcase time="0.387" classname="CategoryDaoTest" name="createCategoriesTest"/>
-  <testcase time="0.324" classname="CategoryDaoTest" name="getCategoryByNameTest"/>
-  <testcase time="0.73" classname="CategoryDaoTest" name="getCategoriesByPostIdTest"/>
-  <testcase time="0.309" classname="CategoryDaoTest" name="testGetCategoryById"/>
+  <testcase time="0.267" classname="CategoryDaoTest" name="testGetCategoryByName"/>
+  <testcase time="0.268" classname="CategoryDaoTest" name="TestGetAllCategories"/>
+  <testcase time="0.246" classname="CategoryDaoTest" name="deleteCategoryTest"/>
+  <testcase time="0.321" classname="CategoryDaoTest" name="testCreateWithDuplicateCategories"/>
+  <testcase time="0.237" classname="CategoryDaoTest" name="updateCategoryTest"/>
+  <testcase time="0.212" classname="CategoryDaoTest" name="createCategoriesTest"/>
+  <testcase time="0.227" classname="CategoryDaoTest" name="getCategoryByNameTest"/>
+  <testcase time="0.295" classname="CategoryDaoTest" name="getCategoriesByPostIdTest"/>
+  <testcase time="0.239" classname="CategoryDaoTest" name="testGetCategoryById"/>
 </testsuite>

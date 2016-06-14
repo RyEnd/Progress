@@ -7,7 +7,7 @@
 
 $(document).ready(function () {
 
-//    loadUsers();
+    loadUsers();
 
     $('#add-button').click(function (event) {
         alert("add button clizzicked");
@@ -31,15 +31,15 @@ $(document).ready(function () {
             $('#add-user-name').val('');
             $('#add-password').val('');
             $('#add-email').val('');
-            //loadUsers();
+            loadUsers();
             clearErrors();
-//        }).error(function (data, status) {
-//            var errorDiv = $('#validationErrors');
-//            clearErrors();
-//            $.each(data.responseJSON.fieldErrors,
-//                    function (index, validationError) {
-//                        errorDiv.append(validationError.message).append($('<br>'));
-//                    });
+        }).error(function (data, status) {
+            var errorDiv = $('#validationErrors');
+            clearErrors();
+            $.each(data.responseJSON.fieldErrors,
+                    function (index, validationError) {
+                        errorDiv.append(validationError.message).append($('<br>'));
+                    });
         }).error(function (){
             alert("error");
         });
@@ -68,12 +68,12 @@ $(document).ready(function () {
             hideEditForm();
             loadUsers();
             clearErrors();
-//        }).error(function (data, status) {
-//            var errorDiv = $('#validationErrorsEdit');
-//            clearErrors();
-//            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
-//                errorDiv.append(validationError.message).append($('<br>'));
-//            });
+        }).error(function (data, status) {
+            var errorDiv = $('#validationErrorsEdit');
+            clearErrors();
+            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+                errorDiv.append(validationError.message).append($('<br>'));
+            });
         });
     });
 

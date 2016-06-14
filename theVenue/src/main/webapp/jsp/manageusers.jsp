@@ -32,7 +32,7 @@
                         <table id="userTable" class="table table-hover">
                             <tr>
                                 <th width="40%">User Name</th>
-                                <th width="30%">Employee</th>
+                                <th width="30%">Email</th>
                                 <th width="15%"></th>
                                 <th width="15%"></th>
                             </tr>
