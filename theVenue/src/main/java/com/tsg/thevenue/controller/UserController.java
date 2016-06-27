@@ -12,12 +12,12 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -28,11 +28,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class UserController {
 
-    private final UserDao dao;
+    private UserDao dao;
+    private PasswordEncoder encoder;
 
     @Inject
-    public UserController(UserDao dao) {
+    public UserController(UserDao dao, PasswordEncoder encoder) {
         this.dao = dao;
+        this.encoder = encoder;
     }
 
     @RequestMapping(value = "/manageusers", method = RequestMethod.GET)
@@ -44,6 +46,8 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public User add(@RequestBody User user) {
+        String hashedPw = encoder.encode(user.getPassword());
+        user.setPassword(hashedPw);
         return dao.addUser(user);
     }
 
@@ -53,10 +57,12 @@ public class UserController {
         dao.deleteUser(userId);
     }
 
-    @RequestMapping(value = "/user/{name}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/user/{userId}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable int userId, @RequestBody User user) {
         user.setUserId(userId);
+        String hashedPw = encoder.encode(user.getPassword());
+        user.setPassword(hashedPw);
         dao.updateUser(user);
     }
 
@@ -77,39 +83,38 @@ public class UserController {
 //    public User getUserByPostId(int userId) {
 //        return dao.getUserByPostId(userId);
 //    }
-    
-    @RequestMapping(value="/displayUserList", method=RequestMethod.GET)
-    public String displayUserList(Map<String, Object> model){
+    @RequestMapping(value = "/displayUserList", method = RequestMethod.GET)
+    public String displayUserList(Map<String, Object> model) {
         List users = dao.getAllUsers();
         model.put("users", users);
         return "displayUserList";
     }
-    
-    @RequestMapping(value="/displayUserForm", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/displayUserForm", method = RequestMethod.GET)
     public String displayUserForm(Map<String, Object> model) {
         return "addUserForm";
     }
-    
-    @RequestMapping(value="/addUser", method=RequestMethod.POST)
+
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public String addUser(HttpServletRequest req) {
         User u = new User();
         u.setUsername(req.getParameter("username"));
-        u.setPassword(req.getParameter("password"));
+        String hashedPw = encoder.encode(req.getParameter("password"));
+        u.setPassword(hashedPw);
         u.setEmail(req.getParameter("email"));
         u.addAuthority("ROLE_USER");
-        if (null != req.getParameter("isAdmin")){
+        if (null != req.getParameter("isAdmin")) {
             u.addAuthority("ROLE_ADMIN");
         }
-        
+
         dao.addUser(u);
-        
+
         return "redirect:displayUserList";
     }
-    
+
 //    @RequestMapping(value="/deleteUser", method=RequestMethod.GET)
 //    public String deleteUser(@RequestParam("username") String username, Map<String, Object> model){
 //        dao.deleteUser(username);
 //        return "redirect:displayUserList";
 //    }
-
 }

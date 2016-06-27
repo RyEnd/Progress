@@ -6,7 +6,9 @@
  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
  http://www.springframework.org/schema/security
  http://www.springframework.org/schema/security/spring-security-3.1.xsd">
-
+    
+    <beans:bean id="encoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/> 
     <!-- Expression Handler bean definition START -->
     <beans:bean id="webexpressionHandler"
                 class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
@@ -45,6 +47,9 @@
         <intercept-url pattern="/contacts" access="ROLE_ADMIN" />
         <intercept-url pattern="/contact" access="ROLE_ADMIN" />
         <intercept-url pattern="/contact/**" access="ROLE_ADMIN" />
+        <intercept-url pattern="/manageUsers" access="ROLE_ADMIN" />
+        <intercept-url pattern="/addUser" access="ROLE_ADMIN" />
+        <intercept-url pattern="/deleteUser" access="ROLE_ADMIN" />
         
         <!-- #3f - Access to all other controller endpoints require user role -->
         <intercept-url pattern="/control" access="ROLE_USER" />
@@ -53,6 +58,7 @@
     <authentication-manager>
         <!-- #4a - Authentication Provider - we’re using the JDBC service -->
         <authentication-provider>
+            <password-encoder ref="encoder"/>
             <!-- #4b - Tells Spring Security where to look for user information -->
             <!-- We use the dataSource defined in spring-persistence.xml -->
             <!-- and we give Spring Security the query to use to lookup -->

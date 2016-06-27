@@ -78,7 +78,7 @@
                                     Password:</label>
 
                                 <div class="col-md-8">
-                                    <input type="text"
+                                    <input type="password"
                                            class="form-control"
                                            id="edit-password"
                                            placeholder="Password"/>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-offset-4 col-md-4">
-                                    <input type="hidden" id="edit-address-id">
+                                    <input type="hidden" id="edit-user-id">
 
                                     <button type="button"
                                             id="edit-cancel-button"
@@ -143,7 +143,7 @@
                                 Password:</label>
 
                             <div class="col-md-8">
-                                <input type="text"
+                                <input type="password"
                                        class="form-control"
                                        id="add-password"
                                        placeholder="Password"/>
