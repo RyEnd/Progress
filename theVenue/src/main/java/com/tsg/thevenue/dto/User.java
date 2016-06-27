@@ -5,6 +5,7 @@
  */
 package com.tsg.thevenue.dto;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,13 +15,24 @@ import java.util.Objects;
 public class User {
     
     private int userId;
-    private String userName;
+    private String username;
     
     private String email;
     private String password;
     private String role;
+    private ArrayList<String> authorities = new ArrayList<String>();
+
+    public ArrayList<String> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(ArrayList<String> authorities) {
+        this.authorities = authorities;
+    }
     
-    
+    public void addAuthority(String authority){
+        this.authorities.add(authority);
+    }
 
     public int getUserId() {
         return userId;
@@ -30,12 +42,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -58,7 +70,7 @@ public class User {
     public int hashCode() {
         int hash = 5;
         hash = 53 * hash + this.userId;
-        hash = 53 * hash + Objects.hashCode(this.userName);
+        hash = 53 * hash + Objects.hashCode(this.username);
         hash = 53 * hash + Objects.hashCode(this.email);
         hash = 53 * hash + Objects.hashCode(this.password);
         return hash;
@@ -79,7 +91,7 @@ public class User {
         if (this.userId != other.userId) {
             return false;
         }
-        if (!Objects.equals(this.userName, other.userName)) {
+        if (!Objects.equals(this.username, other.username)) {
             return false;
         }
         if (!Objects.equals(this.email, other.email)) {

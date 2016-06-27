@@ -7,17 +7,16 @@
 
 $(document).ready(function () {
 
-//    loadUsers();
+    loadUsers();
 
     $('#add-button').click(function (event) {
-        alert("add button clizzicked");
         event.preventDefault();
 
         $.ajax({
             type: 'POST',
             url: 'http://localhost:8080/TheVenue/user',
             data: JSON.stringify({
-                userName: $('#add-user-name').val(),
+                username: $('#add-user-name').val(),
                 email: $('#add-email').val(),
                 password: $('#add-password').val()
             }),
@@ -27,19 +26,20 @@ $(document).ready(function () {
             },
             'dataType': 'json'
         }).success(function (data, status) {
-            alert("success");
+            alert("User was added successfully.");
             $('#add-user-name').val('');
             $('#add-password').val('');
             $('#add-email').val('');
-            //loadUsers();
+            loadUsers();
             clearErrors();
-//        }).error(function (data, status) {
-//            var errorDiv = $('#validationErrors');
-//            clearErrors();
-//            $.each(data.responseJSON.fieldErrors,
-//                    function (index, validationError) {
-//                        errorDiv.append(validationError.message).append($('<br>'));
-//                    });
+        })
+        .error(function (data, status) {
+            var errorDiv = $('#validationErrors');
+            clearErrors();
+            $.each(data.responseJSON.fieldErrors,
+                    function (index, validationError) {
+                        errorDiv.append(validationError.message).append($('<br>'));
+                    });
         }).error(function (){
             alert("error");
         });
@@ -54,7 +54,7 @@ $(document).ready(function () {
             type: 'PUT',
             url: 'http://localhost:8080/TheVenue/user/' + $('#edit-user-id').val(),
             data: JSON.stringify({
-                userName: $('#edit-user-name').val(),
+                username: $('#edit-user-name').val(),
                 email: $('#edit-email').val(),
                 password: $('#edit-password').val()
             }),
@@ -68,12 +68,12 @@ $(document).ready(function () {
             hideEditForm();
             loadUsers();
             clearErrors();
-//        }).error(function (data, status) {
-//            var errorDiv = $('#validationErrorsEdit');
-//            clearErrors();
-//            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
-//                errorDiv.append(validationError.message).append($('<br>'));
-//            });
+        }).error(function (data, status) {
+            var errorDiv = $('#validationErrorsEdit');
+            clearErrors();
+            $.each(data.responseJSON.fieldErrors, function (index, validationError) {
+                errorDiv.append(validationError.message).append($('<br>'));
+            });
         });
     });
 

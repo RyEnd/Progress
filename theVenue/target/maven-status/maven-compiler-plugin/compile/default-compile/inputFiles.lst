@@ -13,6 +13,7 @@
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dto/Tag.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/controller/PageController.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dao/StatusDao.java
+/home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/controller/PasswordEncryptor.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/controller/EndpointController.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/controller/ErrorController.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/controller/PageRestController.java
@@ -22,8 +23,8 @@
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dao/NavBarLocationDaoImpl.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dao/PageDao.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dto/User.java
-/home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dto/ModelToPass.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dto/NavBarLocation.java
+/home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dto/ModelToPass.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dto/Author.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/controller/CategoryController.java
 /home/ryan/dev/_repos/Software-Guild-Projects/theVenue/src/main/java/com/tsg/thevenue/dao/PageDaoImpl.java

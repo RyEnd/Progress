@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="4.413" errors="0" skipped="0" tests="15" name="PostDaoTest">
+<testsuite failures="0" time="4.599" errors="0" skipped="0" tests="15" name="PostDaoTest">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64"/>
@@ -61,19 +61,19 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.287" classname="PostDaoTest" name="getActivePostCondition2Test"/>
-  <testcase time="0.278" classname="PostDaoTest" name="getPostByIdTest"/>
-  <testcase time="0.302" classname="PostDaoTest" name="getPostByTitleTest"/>
-  <testcase time="0.265" classname="PostDaoTest" name="deletePostTest"/>
-  <testcase time="0.279" classname="PostDaoTest" name="getPostByCategoryIdTest"/>
-  <testcase time="0.266" classname="PostDaoTest" name="getPostByUrlTitleTest"/>
-  <testcase time="0.289" classname="PostDaoTest" name="getAllPost"/>
-  <testcase time="0.291" classname="PostDaoTest" name="getPostByTagId"/>
-  <testcase time="0.293" classname="PostDaoTest" name="getAllActiePostTest"/>
-  <testcase time="0.3" classname="PostDaoTest" name="getPostByCategoryNameTest"/>
-  <testcase time="0.266" classname="PostDaoTest" name="publishPostTest"/>
-  <testcase time="0.301" classname="PostDaoTest" name="archivePostTest"/>
-  <testcase time="0.419" classname="PostDaoTest" name="getPostByTagName"/>
-  <testcase time="0.301" classname="PostDaoTest" name="updatePostTest"/>
-  <testcase time="0.276" classname="PostDaoTest" name="createPostTest"/>
+  <testcase time="0.279" classname="PostDaoTest" name="getActivePostCondition2Test"/>
+  <testcase time="0.316" classname="PostDaoTest" name="getPostByIdTest"/>
+  <testcase time="0.295" classname="PostDaoTest" name="getPostByTitleTest"/>
+  <testcase time="0.286" classname="PostDaoTest" name="deletePostTest"/>
+  <testcase time="0.294" classname="PostDaoTest" name="getPostByCategoryIdTest"/>
+  <testcase time="0.423" classname="PostDaoTest" name="getPostByUrlTitleTest"/>
+  <testcase time="0.287" classname="PostDaoTest" name="getAllPost"/>
+  <testcase time="0.313" classname="PostDaoTest" name="getPostByTagId"/>
+  <testcase time="0.271" classname="PostDaoTest" name="getAllActiePostTest"/>
+  <testcase time="0.337" classname="PostDaoTest" name="getPostByCategoryNameTest"/>
+  <testcase time="0.29" classname="PostDaoTest" name="publishPostTest"/>
+  <testcase time="0.33" classname="PostDaoTest" name="archivePostTest"/>
+  <testcase time="0.298" classname="PostDaoTest" name="getPostByTagName"/>
+  <testcase time="0.299" classname="PostDaoTest" name="updatePostTest"/>
+  <testcase time="0.281" classname="PostDaoTest" name="createPostTest"/>
 </testsuite>
